@@ -1,5 +1,10 @@
 
 import static java.lang.Math.sqrt;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 /*
@@ -34,28 +39,27 @@ public class Punto {
     public void sety (double y){ this.y = y; }
     
     
-    public double distanciaEuclidea (double xi, double yi, double xj, double yj){
-        return sqrt(Math.pow(xi-xj,2) + Math.pow(yi-yj,2));
+    public double distanciaEuclidea (Punto p){
+        return sqrt(Math.pow(this.x - p.x,2) + Math.pow(this.y - p.y,2));
     }
             
-    public Punto rndCoordenada(){
+    public Punto rndCoordenada(int rango){
         Punto aux = new Punto();
-        
-        Random rndx = new Random(System.currentTimeMillis());        // Producir nuevo int aleatorio entre 0 y 99
-        aux.x = rndx.nextInt(100);                                  // Refrescar datos aleatorios 
-        rndx.setSeed(System.currentTimeMillis());
-        Random rndy = new Random(System.currentTimeMillis());
-        aux.y = rndy.nextInt(100);
-        rndy.setSeed(System.currentTimeMillis());
-        
+        aux.x = new Random().nextInt(rango);
+        aux.y = new Random().nextInt(rango);
         return aux;
     }
     
     
-    public void generarNube (){
-    
-    
-    
+    public Map<Integer,Punto> generarNube (int size){
+        Map<Integer,Punto> nube = new HashMap<>();
+        int rango = 100;
+        for (int i = 0; i < size; i++){
+             nube.put(i,rndCoordenada(rango));
+        }
+        return nube;
     }
+    
+    
     
 }

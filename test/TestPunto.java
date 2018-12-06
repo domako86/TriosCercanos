@@ -4,6 +4,11 @@
  * and open the template in the editor.
  */
 
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -25,10 +30,27 @@ public class TestPunto {
     
     @Test
     public void distanciaEuclidea(){
+        Punto punto = new Punto(2,1);
+        Punto p1 = new Punto(2,2);
+        //Punto p2 = new Punto();
+        double distEuclidea = punto.distanciaEuclidea(p1);
+        assertEquals(1, distEuclidea, DELTA);              
+    }
+    
+    @Test
+    public void TestNube(){
         Punto punto = new Punto();
-        double distEuclidea = punto.distanciaEuclidea(2, 1, 2, 2);
-        assertEquals(1, distEuclidea, DELTA);
+        Map<Integer,Punto> nubeaux = new HashMap<>();
+        int size = 5;
+        nubeaux = punto.generarNube(size);
+        assertEquals(size, nubeaux.size(),DELTA);
+        System.out.println("keyset:" + nubeaux.keySet());
+        Iterator<Entry<Integer,Punto>> it = nubeaux.entrySet().iterator();
+        while (it.hasNext()) {
+            Entry<Integer,Punto> e = it.next();
+            System.out.println("key:" + e.getKey() + " " + "[" + e.getValue().getx() + "," + e.getValue().gety()+ "]");
+        }
         
-        
+    
     }
 }
