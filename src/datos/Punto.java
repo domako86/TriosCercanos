@@ -1,4 +1,6 @@
 
+package datos;
+
 import static java.lang.Math.sqrt;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -51,15 +53,24 @@ public class Punto {
     }
     
     
-    public Map<Integer,Punto> generarNube (int size){
+    public Map<Integer,Punto> generarNube (int size){       //Tamaño de la nube de puntos.
         Map<Integer,Punto> nube = new HashMap<>();
-        int rango = 100;
+        int rango = 100;                                    //Rango de generación de numeros aleatorios.
         for (int i = 0; i < size; i++){
              nube.put(i,rndCoordenada(rango));
         }
         return nube;
     }
     
-    
+    public double perimetro(Punto p1, Punto p2, Punto p3){
+        double perimetro = 0;
+        Punto aux;
+        aux = p1;
+        perimetro += aux.distanciaEuclidea(p2);
+        perimetro += aux.distanciaEuclidea(p3);
+        aux = p2;
+        perimetro += aux.distanciaEuclidea(p3);
+        return perimetro;
+    }
     
 }

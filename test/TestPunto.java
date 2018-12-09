@@ -3,6 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import datos.Punto;
+import algoritmos.Exhaustivo;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -30,11 +32,11 @@ public class TestPunto {
     
     @Test
     public void distanciaEuclidea(){
-        Punto punto = new Punto(2,1);
-        Punto p1 = new Punto(2,2);
+        Punto punto = new Punto(2,2);
+        Punto p1 = new Punto(2,0);
         //Punto p2 = new Punto();
         double distEuclidea = punto.distanciaEuclidea(p1);
-        assertEquals(1, distEuclidea, DELTA);              
+        assertEquals(2, distEuclidea, DELTA);              
     }
     
     @Test
@@ -49,8 +51,26 @@ public class TestPunto {
         while (it.hasNext()) {
             Entry<Integer,Punto> e = it.next();
             System.out.println("key:" + e.getKey() + " " + "[" + e.getValue().getx() + "," + e.getValue().gety()+ "]");
-        }
-        
+        }    
+    }
+    
+    @Test 
+    public void TestPerimetro(){
+        Punto aux = new Punto();
+//        Punto p1 = new Punto(2,0);
+//        Punto p2 = new Punto(2,1);
+//        Punto p3 = new Punto(2,2);
+//        assertEquals(4,aux.perimetro(p1, p2, p3),DELTA); 
+        Punto p1 = new Punto(89,73);
+        Punto p2 = new Punto(39,20);
+        Punto p3 = new Punto(23,27);
+        assertEquals(170.775,aux.perimetro(p1, p2, p3),DELTA);
+    }
+    
+    @Test
+    public void TestExhaustivo(){
+        Exhaustivo ex = new Exhaustivo();
+        ex.recorrer();
     
     }
 }
