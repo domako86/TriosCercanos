@@ -72,5 +72,15 @@ public class Punto {
         perimetro += aux.distanciaEuclidea(p3);
         return perimetro;
     }
+
+    public int compareTo(Punto value) {
+        if(this.x >= value.getx()){
+            return 1;
+        }else{
+            return -1;
+        }
+        }
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
-}
+
